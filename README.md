@@ -1,4 +1,4 @@
-# A minimal VPC setup with a public subnet and a private subnet
+# A minimal VPC setup
 
 This repository contains a Terraform configuration to create a minimal VPC setup with a public subnet and a private subnet.
 
