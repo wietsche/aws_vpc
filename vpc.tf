@@ -12,7 +12,7 @@ resource "aws_vpc" "vpc" {
   }
 }
 
-### INTERNERT GATEWAY ###
+### INTERNET GATEWAY ###
 ### Required for resources in the VPC to access the internet.
 
 resource "aws_internet_gateway" "internet_gateway" {
@@ -69,7 +69,7 @@ resource "aws_subnet" "private_subnet1" {
 }
 
 ### NAT GATEWAY ###
-### Required for resources in the private subnet to access the internet, but cant be accessed from the internet.
+### Required for resources in the private subnet to access the internet, but cannot be accessed from the internet.
 
 resource "aws_eip" "nat_gateway_ip" {}
 

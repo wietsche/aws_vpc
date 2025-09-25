@@ -53,7 +53,7 @@ resource "tls_private_key" "ec2_host" {
 }
 
 resource "aws_key_pair" "jump_host" {
-  key_name   = "local.project_name-key"
+  key_name   = "${local.project_name}-key"
   public_key = tls_private_key.ec2_host.public_key_openssh
 }
 
@@ -102,7 +102,7 @@ resource "aws_instance" "host_public" {
 }
 
 # launch the same instance in the private subnet, will have outbound internet access, not inbound
-resource "aws_instance" "jump_hot_private" {
+resource "aws_instance" "jump_host_private" {
   ami                         = data.aws_ami.amzn-linux-2023-ami.id
   instance_type               = "t2.micro"
   subnet_id                   = aws_subnet.private_subnet1.id
@@ -110,7 +110,7 @@ resource "aws_instance" "jump_hot_private" {
   key_name                    = aws_key_pair.jump_host.key_name
   user_data                   = local.jump_host_user_data
   user_data_replace_on_change = true
-  associate_public_ip_address = true
+  associate_public_ip_address = false
   tags = {
     Name = "host_private"
   }

@@ -13,7 +13,7 @@ An EC2 instance is created in each subnet, so that the behaviour can be tested.
 The code is annotated with comments to explain the purpose of each resource and the configuration options used.
 
 (The code is the result of an exercise to get practical experience setting up a minimal, secure AWS account using 
-TerraformIs it is not intented for production, however you are welcome to use this for inspiration.)
+Terraform. It is not intended for production, however you are welcome to use this for inspiration.)
 
 ## Prerequisites
 
