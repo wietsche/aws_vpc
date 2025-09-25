@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: learning_postgres
+    environment:
+      POSTGRES_USER: student
+      POSTGRES_PASSWORD: learning123
+      POSTGRES_DB: learning_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./schemas:/docker-entrypoint-initdb.d/
+    networks:
+      - db_network
+
+  mysql:
+    image: mysql:8.0
+    container_name: learning_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: learning123
+      MYSQL_DATABASE: learning_db
+      MYSQL_USER: student
+      MYSQL_PASSWORD: learning123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - db_network
+
+  adminer:
+    image: adminer:latest
+    container_name: db_adminer
+    ports:
+      - "8080:8080"
+    networks:
+      - db_network
+    depends_on:
+      - postgres
+      - mysql
+
+volumes:
+  postgres_data:
+  mysql_data:
+
+networks:
+  db_network:
+    driver: bridge

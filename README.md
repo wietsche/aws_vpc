@@ -1,34 +1,44 @@
-# A minimal VPC setup
+# Learning Relational Databases
 
-This repository contains a Terraform configuration to create a minimal VPC setup with a public subnet and a private subnet.
+This repository contains practical examples and exercises for learning relational database concepts, SQL queries, and database design principles.
 
-An EC2 instance is created in each subnet, so that the behaviour can be tested. 
+## What You'll Learn
 
-- Both instances serve a "Hello World" web page using a simple web server.
-- You should be able to reach the public page over the internet, but not the private one.
-- If you open ssh ports you should be able to connect to the public instance using pem key, but not to the private one.
-- If should be able to ssh to the private instance from the public instance if port 22 is open
-- You should be able to reach the internet from both instances.
+- **Database Design**: Entity-Relationship modeling, normalization, and schema design
+- **SQL Fundamentals**: SELECT, INSERT, UPDATE, DELETE operations
+- **Advanced SQL**: JOINs, subqueries, window functions, and complex queries
+- **Database Constraints**: Primary keys, foreign keys, unique constraints, and check constraints
+- **Indexing**: Understanding and implementing database indexes for performance
+- **Transactions**: ACID properties and transaction management
+- **Views and Stored Procedures**: Creating reusable database objects
 
-The code is annotated with comments to explain the purpose of each resource and the configuration options used.
+## Repository Structure
 
-(The code is the result of an exercise to get practical experience setting up a minimal, secure AWS account using 
-TerraformIs it is not intented for production, however you are welcome to use this for inspiration.)
+- `schemas/` - Database schema definitions for different use cases
+- `examples/` - SQL example queries organized by topic
+- `exercises/` - Hands-on exercises with solutions
+- `docker/` - Docker setup for local database testing
+- `data/` - Sample datasets for practice
 
 ## Prerequisites
 
-- An AWS account 
-- Access to a User and/or Role with the necessary permissions to create the resources defined in the Terraform configuration
-- AWS CLI installed on your local machine https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html and configured with the necessary credentials
-- Terraform installed on your local machine https://developer.hashicorp.com/terraform/install
+- Basic understanding of data and tables
+- Docker installed on your local machine (for running database instances)
+- A SQL client tool (DBeaver, MySQL Workbench, pgAdmin, or command line)
 
-## Usage
+## Getting Started
 
-1. Clone the repository
-2. Navigate to the root of the repository
-3. Run `terraform init` to initialize the Terraform configuration
-4. Run `terraform apply` to create the resources
+1. Clone this repository
+2. Navigate to the repository root
+3. Start the database using Docker: `docker-compose up -d`
+4. Connect to the database using your preferred SQL client
+5. Follow the exercises in the `exercises/` directory
 
-Now you can test the behaviour as described above.
+## Supported Databases
 
-When you are done, you can run `terraform destroy` to delete the resources.
+This repository includes examples for:
+- **PostgreSQL** (primary focus)
+- **MySQL**
+- **SQLite** (for lightweight local testing)
+
+Each database has its own Docker configuration and specific examples highlighting unique features.
